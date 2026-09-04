@@ -384,17 +384,17 @@ export const GlobalDisasterView: React.FC<GlobalDisasterViewProps> = ({
           isDetailModalOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        {/* Country, State, Era & Search Filter Bar */}
-        <div className="flex flex-wrap items-center gap-2 bg-slate-900/95 backdrop-blur-xl border border-slate-700/90 p-2 rounded-2xl shadow-2xl pointer-events-auto text-xs">
+        {/* Single Streamlined Floating Bar: Country, Search, Hazard Pills & Map Controls */}
+        <div className="flex items-center flex-wrap gap-2 bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 p-1.5 rounded-2xl shadow-2xl pointer-events-auto text-xs">
           {/* Country Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-            <Globe className="w-4 h-4 text-cyan-400" />
+          <div className="flex items-center gap-1.5 bg-slate-950 px-2.5 py-1 rounded-xl border border-slate-800">
+            <Globe className="w-3.5 h-3.5 text-cyan-400" />
             <select
               value={selectedCountry}
               onChange={(e) => handleCountryChange(e.target.value)}
-              className="bg-transparent text-white font-extrabold outline-none cursor-pointer text-xs"
+              className="bg-transparent text-white font-bold outline-none cursor-pointer text-xs"
             >
-              <option value="ALL">🌍 Earth (All Countries)</option>
+              <option value="ALL">🌍 All Countries</option>
               {countries.map((c) => (
                 <option key={c.country} value={c.country} className="bg-slate-900">
                   {c.country} ({c.totalDisasters})
@@ -403,207 +403,86 @@ export const GlobalDisasterView: React.FC<GlobalDisasterViewProps> = ({
             </select>
           </div>
 
-          {/* State / Province Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-            <MapPin className="w-4 h-4 text-amber-400" />
-            <select
-              value={selectedState}
-              onChange={(e) => handleStateChange(e.target.value)}
-              disabled={selectedCountry === 'ALL'}
-              className="bg-transparent text-white font-bold outline-none cursor-pointer text-xs disabled:opacity-40"
-            >
-              <option value="ALL">All States / Provinces</option>
-              {availableStates.map((s) => (
-                <option key={s} value={s} className="bg-slate-900">
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Historical Era Selector (Always available or when checking past disasters) */}
-          <div className="flex items-center gap-1.5 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-            <Calendar className="w-4 h-4 text-amber-400" />
-            <select
-              value={selectedEra}
-              onChange={(e) => setSelectedEra(e.target.value)}
-              className="bg-transparent text-white font-semibold outline-none cursor-pointer text-xs"
-            >
-              <option value="ALL">All Eras (Till Date)</option>
-              <option value="RECENT_2020_2026">2020–2026 Contemporary</option>
-              <option value="CONTEMPORARY_2000_2019">2000–2019 21st Cent</option>
-              <option value="CENTURY_20TH">1900–1999 20th Cent</option>
-              <option value="ANCIENT_PRE1900">Ancient / Pre-1900</option>
-            </select>
-          </div>
-
           {/* Search Box */}
-          <div className="flex items-center gap-1.5 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 text-xs">
-            <Search className="w-3.5 h-3.5 text-slate-400" />
+          <div className="flex items-center gap-1.5 bg-slate-950 px-2.5 py-1 rounded-xl border border-slate-800 text-xs">
+            <Search className="w-3 h-3 text-slate-400" />
             <input
               type="text"
-              placeholder="Search disaster, city, year..."
+              placeholder="Search disaster / city..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent text-white placeholder:text-slate-500 outline-none w-36 md:w-44 font-medium"
+              className="bg-transparent text-white placeholder:text-slate-500 outline-none w-28 md:w-36 text-xs font-medium"
             />
           </div>
 
-          {/* Status Tabs with Plain-Language Meaning */}
-          <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 text-[11px] font-mono">
+          {/* Simple Form Hazard Pills: ALL | LS | EQ | FL | CY | WF | TS | VO */}
+          <div className="flex items-center gap-1 text-[11px] font-mono">
             <button
-              onClick={() => setSelectedStatus('ALL')}
-              className={`px-2.5 py-1 rounded-lg transition font-bold ${
-                selectedStatus === 'ALL' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+              onClick={() => setSelectedType('ALL')}
+              className={`px-2 py-0.5 rounded-lg transition font-extrabold ${
+                selectedType === 'ALL'
+                  ? 'bg-cyan-600 text-white shadow'
+                  : 'text-slate-400 hover:text-white bg-slate-950 border border-slate-800'
               }`}
             >
               ALL
             </button>
-            <button
-              onClick={() => setSelectedStatus('ACTIVE_NOW')}
-              className={`px-2.5 py-1 rounded-lg transition font-bold flex items-center gap-1.5 ${
-                selectedStatus === 'ACTIVE_NOW'
-                  ? 'bg-red-600 text-white shadow-sm animate-pulse'
-                  : 'text-red-400 hover:text-white'
-              }`}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
-              HAPPENING NOW
-            </button>
-            <button
-              onClick={() => setSelectedStatus('UPCOMING_PREDICTED')}
-              className={`px-2.5 py-1 rounded-lg transition font-bold ${
-                selectedStatus === 'UPCOMING_PREDICTED'
-                  ? 'bg-amber-600 text-white shadow-sm'
-                  : 'text-amber-400 hover:text-white'
-              }`}
-            >
-              GOING TO HAPPEN
-            </button>
-            <button
-              onClick={() => setSelectedStatus('PAST_HISTORICAL')}
-              className={`px-2.5 py-1 rounded-lg transition font-bold ${
-                selectedStatus === 'PAST_HISTORICAL'
-                  ? 'bg-cyan-700 text-white shadow-sm'
-                  : 'text-cyan-400 hover:text-white'
-              }`}
-            >
-              PAST (TILL DATE)
-            </button>
+            {ALL_DISASTER_CODE_LEGENDS.map((leg) => {
+              const isSelected = selectedType === leg.code || selectedType === leg.name.toUpperCase();
+              return (
+                <button
+                  key={leg.code}
+                  onClick={() => setSelectedType(isSelected ? 'ALL' : leg.code)}
+                  className={`px-2 py-0.5 rounded-lg transition font-bold flex items-center gap-1 border ${
+                    isSelected
+                      ? `${leg.badgeBg} ${leg.badgeText} ${leg.badgeBorder} ring-2 ring-cyan-400 font-black shadow`
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
+                  }`}
+                  title={`${leg.name} (${leg.code}): ${leg.description}`}
+                >
+                  <span className={`font-mono font-black ${leg.badgeText}`}>
+                    {leg.code}
+                  </span>
+                  <span className="hidden xl:inline text-[10px]">{leg.name}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Right HUD Controls: Satellite Layer Switcher & Archive / Cards Button */}
-        <div className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/90 p-2 rounded-2xl shadow-2xl pointer-events-auto flex items-center gap-2 text-xs">
-          {/* Map Layer Mode Switcher */}
-          <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 text-[11px] font-bold">
-            <button
-              onClick={() => setMapTileMode('DARK')}
-              className={`px-2.5 py-1 rounded-lg transition ${
-                mapTileMode === 'DARK' ? 'bg-slate-800 text-cyan-400' : 'text-slate-400 hover:text-white'
-              }`}
-              title="Dark Tactical Tile Map"
-            >
-              Dark Map
-            </button>
-            <button
-              onClick={() => setMapTileMode('SATELLITE')}
-              className={`px-2.5 py-1 rounded-lg transition flex items-center gap-1 ${
-                mapTileMode === 'SATELLITE' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'
-              }`}
-              title="Real Satellite Photography"
-            >
-              <Satellite className="w-3 h-3" />
-              <span>Satellite</span>
-            </button>
-            <button
-              onClick={() => setMapTileMode('STREET')}
-              className={`px-2.5 py-1 rounded-lg transition ${
-                mapTileMode === 'STREET' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
-              }`}
-              title="Standard Street Map"
-            >
-              Terrain
-            </button>
-          </div>
+        {/* Right HUD Controls: Satellite toggle & Cards list */}
+        <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 p-1.5 rounded-2xl shadow-2xl pointer-events-auto flex items-center gap-1.5 text-xs">
+          {/* Map Layer Mode Switcher: Dark vs Satellite */}
+          <button
+            onClick={() => setMapTileMode(mapTileMode === 'DARK' ? 'SATELLITE' : 'DARK')}
+            className="px-2.5 py-1 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white font-bold flex items-center gap-1 text-xs transition"
+            title="Toggle Map Style"
+          >
+            {mapTileMode === 'DARK' ? (
+              <>
+                <Satellite className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Satellite</span>
+              </>
+            ) : (
+              <>
+                <Layers className="w-3.5 h-3.5 text-slate-400" />
+                <span>Dark Map</span>
+              </>
+            )}
+          </button>
 
-          {/* Full Historical Archive View Button */}
-          {onOpenHistoricalArchive && (
-            <button
-              onClick={onOpenHistoricalArchive}
-              className="px-3 py-1.5 rounded-xl font-extrabold flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg shadow-amber-950/40 transition whitespace-nowrap"
-            >
-              <History className="w-4 h-4" />
-              <span>Historical Archive</span>
-            </button>
-          )}
-
-          {/* Before & After Satellite Studio Button */}
-          {onOpenSatelliteStudio && (
-            <button
-              onClick={() => onOpenSatelliteStudio()}
-              className="px-3 py-1.5 rounded-xl font-extrabold flex items-center gap-1.5 bg-indigo-950 hover:bg-indigo-900 border border-indigo-500/60 text-indigo-300 shadow-lg transition whitespace-nowrap"
-              title="Open Before vs. After Live Satellite Imagery Studio"
-            >
-              <Satellite className="w-4 h-4 text-cyan-400" />
-              <span>Sat Studio</span>
-            </button>
-          )}
-
-          {/* Cards Drawer Button */}
+          {/* Cards Drawer Toggle */}
           <button
             onClick={() => setShowCardsDrawer(!showCardsDrawer)}
-            className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
+            className={`px-2.5 py-1 rounded-xl font-bold flex items-center gap-1.5 transition whitespace-nowrap text-xs ${
               showCardsDrawer
                 ? 'bg-cyan-600 text-white'
                 : 'bg-slate-950 text-slate-300 hover:text-white border border-slate-800'
             }`}
           >
-            <List className="w-4 h-4" />
-            <span>{showCardsDrawer ? 'Hide Cards' : `Cards (${filteredDisasters.length})`}</span>
+            <List className="w-3.5 h-3.5" />
+            <span>{showCardsDrawer ? 'Hide' : `Cards (${filteredDisasters.length})`}</span>
           </button>
-        </div>
-
-        {/* Simple Disaster Form Strip (LS: Landslide, EQ: Earthquake, FL: Flood, etc.) */}
-        <div className="w-full flex flex-wrap items-center gap-1.5 bg-slate-900/95 backdrop-blur-xl border border-slate-700/90 px-3 py-1.5 rounded-2xl shadow-xl pointer-events-auto text-[11px] font-mono">
-          <span className="text-[10px] text-cyan-400 font-extrabold uppercase tracking-wider mr-1 flex items-center gap-1">
-            <Filter className="w-3 h-3 text-cyan-400" /> Simple Form:
-          </span>
-          <button
-            onClick={() => setSelectedType('ALL')}
-            className={`px-2.5 py-1 rounded-xl transition font-extrabold flex items-center gap-1 ${
-              selectedType === 'ALL'
-                ? 'bg-cyan-600 text-white shadow'
-                : 'text-slate-400 hover:text-white bg-slate-950 border border-slate-800'
-            }`}
-          >
-            <span>ALL</span>
-            <span className="text-[9px] opacity-70">({disasters.length})</span>
-          </button>
-          {ALL_DISASTER_CODE_LEGENDS.map((leg) => {
-            const count = disasters.filter((d) => getDisasterCode(d.type) === leg.code).length;
-            const isSelected = selectedType === leg.code || selectedType === leg.name.toUpperCase();
-            return (
-              <button
-                key={leg.code}
-                onClick={() => setSelectedType(isSelected ? 'ALL' : leg.code)}
-                className={`px-2 py-1 rounded-xl transition font-bold flex items-center gap-1.5 border ${
-                  isSelected
-                    ? `${leg.badgeBg} ${leg.badgeText} ${leg.badgeBorder} ring-2 ring-cyan-400 shadow-md font-black`
-                    : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
-                }`}
-                title={`${leg.name} (${leg.code}): ${leg.description}`}
-              >
-                <span
-                  className={`font-black font-mono text-[11px] px-1.5 py-0.2 rounded bg-slate-900 ${leg.badgeText} border ${leg.badgeBorder}`}
-                >
-                  {leg.code}
-                </span>
-                <span>{leg.name}</span>
-                <span className="text-[9px] opacity-60">({count})</span>
-              </button>
-            );
-          })}
         </div>
       </div>
 
