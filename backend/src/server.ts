@@ -19,7 +19,9 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // Load mock datasets
-const dataDir = path.resolve(__dirname, 'data');
+const dataDir = fs.existsSync(path.resolve(__dirname, 'data'))
+  ? path.resolve(__dirname, 'data')
+  : path.resolve(__dirname, '../src/data');
 const hazardZonesGeoJson = JSON.parse(fs.readFileSync(path.join(dataDir, 'ner_hazard_zones.json'), 'utf8'));
 const historicalScarsGeoJson = JSON.parse(fs.readFileSync(path.join(dataDir, 'historical_scars.json'), 'utf8'));
 const infrastructureGeoJson = JSON.parse(fs.readFileSync(path.join(dataDir, 'critical_infrastructure.json'), 'utf8'));
