@@ -1,7 +1,7 @@
 {
-  "name": "global-disaster-managing-web",
+  "name": "terrain-guard",
   "version": "1.0.0",
-  "description": "Global Disaster Managing Web - Earth-Scale Multi-Hazard Intelligence & 500m Early Warning System",
+  "description": "Terrain Guard - Earth-Scale Multi-Hazard Intelligence & 500m Early Warning System",
   "scripts": {
     "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build",
     "start": "cd backend && node dist/server.js",

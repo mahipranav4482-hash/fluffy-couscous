@@ -1,6 +1,6 @@
 {
-  "name": "Global Disaster Managing Web",
-  "short_name": "Global Disaster",
+  "name": "Terrain Guard",
+  "short_name": "Terrain Guard",
   "description": "Earth-Scale Real-Time Multi-Hazard Disaster Monitoring & 500m Early Warning System",
   "start_url": "/",
   "display": "standalone",

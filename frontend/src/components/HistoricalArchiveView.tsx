@@ -126,7 +126,7 @@ export const HistoricalArchiveView: React.FC<HistoricalArchiveViewProps> = ({
 
         <div className="max-w-4xl relative z-10">
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider mb-2">
-            <History className="w-4 h-4" /> Global Disaster Managing Web • Earth-Scale Historical Archive
+            <History className="w-4 h-4" /> Terrain Guard • Earth-Scale Historical Archive
           </div>
           <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
             Every Disaster & Abnormality in Recorded History (Till Date)

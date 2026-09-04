@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="flex items-center gap-2">
           <h1 className="text-sm font-extrabold text-white tracking-wide flex items-center gap-1.5">
-            Global Disaster Web <span className="text-[10px] bg-red-500/20 text-red-400 font-mono px-1.5 py-0.5 rounded border border-red-500/30">EWS 2026</span>
+            Terrain Guard <span className="text-[10px] bg-red-500/20 text-red-400 font-mono px-1.5 py-0.5 rounded border border-red-500/30">EWS 2026</span>
           </h1>
         </div>
       </div>

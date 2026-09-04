@@ -39,7 +39,7 @@ export const OfflinePwaView: React.FC<OfflinePwaViewProps> = ({ isOpen, onClose,
         <div className="bg-slate-900/90 border-b border-slate-800 px-4 py-2 flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <Shield className="w-4 h-4 text-emerald-400" />
-            <span className="font-bold text-slate-100 text-xs">Global Disaster Managing Web (Offline)</span>
+            <span className="font-bold text-slate-100 text-xs">Terrain Guard (Offline)</span>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-white text-xs">
             ✕

@@ -1,8 +1,8 @@
-# Global Disaster Managing Web
+# Terrain Guard
 ### Earth-Scale Real-Time Multi-Hazard Monitoring & 500-Meter Emergency Warning System
 **SIH 2026 Problem Statement SIH26001 | Ministry of Development of North Eastern Region (MDoNER)**
 
-**Global Disaster Managing Web** is an AI-powered, full-stack disaster intelligence and early warning platform. It enables citizens and disaster authorities to monitor past, active, and upcoming disasters across every country and state on Earth, featuring live screen mapping, anomaly detection, and an automated **500-meter hyper-local emergency audio buzzer siren**.
+**Terrain Guard** is an AI-powered, full-stack disaster intelligence and early warning platform. It enables citizens and disaster authorities to monitor past, active, and upcoming disasters across every country and state on Earth, featuring live screen mapping, anomaly detection, and an automated **500-meter hyper-local emergency audio buzzer siren**.
 
 ---
 
