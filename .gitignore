@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build artifacts (dist in frontend is committed or built by CI)
+backend/dist/
+
+# Binaries & Tooling
+mingit/
+cloudflared.exe
+*.log
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+.system_generated/
+scratch/
+backend/scratch/

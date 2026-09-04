@@ -1,0 +1,82 @@
+{
+  "type": "FeatureCollection",
+  "name": "NER_Critical_Infrastructure_Shelters",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "INFRA-SK-01",
+        "name": "Pakyong Government Senior Secondary School (Primary Shelter)",
+        "category": "EVACUATION_SHELTER",
+        "capacity_persons": 850,
+        "backup_power": true,
+        "contact": "+91-3592-257001",
+        "safe_elevation_m": 1420
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.592, 27.242]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "INFRA-SK-02",
+        "name": "Rangpo Community Transit Camp (Teesta Basin Relief Centre)",
+        "category": "EVACUATION_SHELTER",
+        "capacity_persons": 1200,
+        "backup_power": true,
+        "contact": "+91-3592-240112",
+        "safe_elevation_m": 410
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.532, 27.182]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "INFRA-SK-03",
+        "name": "STNM Multispeciality Hospital, Sochagang, Gangtok",
+        "category": "HOSPITAL",
+        "capacity_persons": 1000,
+        "emergency_icu_beds": 120,
+        "contact": "+91-3592-202944",
+        "helipad_ready": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.625, 27.320]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "INFRA-SK-04",
+        "name": "Border Roads Organisation (Project Swastik) 29th Mile Post",
+        "category": "HIGHWAY_SECURITY_POST",
+        "heavy_machinery": "3x Excavators, 2x Wheel Loaders, 1x Bailey Bridge Depot",
+        "contact": "+91-3592-221199"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.491, 27.126]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "INFRA-ML-05",
+        "name": "Sohra Civil Hospital Emergency Relief Station",
+        "category": "HOSPITAL",
+        "capacity_persons": 350,
+        "contact": "+91-3637-235222"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [91.722, 25.285]
+      }
+    }
+  ]
+}

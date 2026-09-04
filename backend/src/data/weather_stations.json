@@ -1,0 +1,62 @@
+[
+  {
+    "station_id": "AWS-SK-01",
+    "name": "Pakyong Automated Telemetry Mast",
+    "coordinates": [88.588, 27.231],
+    "elevation_m": 1380,
+    "rainfall_1h_mm": 4.2,
+    "rainfall_24h_mm": 38.5,
+    "rainfall_72h_mm": 64.0,
+    "antecedent_15d_mm": 112.0,
+    "soil_moisture_pct": 52.0,
+    "pore_pressure_kpa": 4.8,
+    "insar_deformation_mm_week": -0.8,
+    "battery_v": 13.8,
+    "status": "ONLINE"
+  },
+  {
+    "station_id": "AWS-SK-02",
+    "name": "NH-10 Seti Jhora Bridge Mast",
+    "coordinates": [88.495, 27.130],
+    "elevation_m": 310,
+    "rainfall_1h_mm": 8.6,
+    "rainfall_24h_mm": 52.0,
+    "rainfall_72h_mm": 95.0,
+    "antecedent_15d_mm": 178.0,
+    "soil_moisture_pct": 68.0,
+    "pore_pressure_kpa": 12.2,
+    "insar_deformation_mm_week": -2.4,
+    "battery_v": 13.2,
+    "status": "ONLINE"
+  },
+  {
+    "station_id": "AWS-SK-03",
+    "name": "Gangtok Burtuk Ridge Node",
+    "coordinates": [88.612, 27.338],
+    "elevation_m": 1650,
+    "rainfall_1h_mm": 6.1,
+    "rainfall_24h_mm": 44.0,
+    "rainfall_72h_mm": 78.0,
+    "antecedent_15d_mm": 140.0,
+    "soil_moisture_pct": 58.0,
+    "pore_pressure_kpa": 7.5,
+    "insar_deformation_mm_week": -1.2,
+    "battery_v": 14.1,
+    "status": "ONLINE"
+  },
+  {
+    "station_id": "AWS-ML-04",
+    "name": "Sohra (Cherrapunji) Plateau AWS",
+    "coordinates": [91.705, 25.275],
+    "elevation_m": 1430,
+    "rainfall_1h_mm": 12.4,
+    "rainfall_24h_mm": 88.0,
+    "rainfall_72h_mm": 182.0,
+    "antecedent_15d_mm": 240.0,
+    "soil_moisture_pct": 74.0,
+    "pore_pressure_kpa": 16.4,
+    "insar_deformation_mm_week": -1.8,
+    "battery_v": 13.5,
+    "status": "ONLINE"
+  }
+]
