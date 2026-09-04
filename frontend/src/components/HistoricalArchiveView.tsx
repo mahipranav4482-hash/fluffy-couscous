@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GlobalDisaster, DisasterType, GlobalLossSummary } from '../types.js';
+import { DataService } from '../services/dataService.js';
 import {
   History,
   Search,
@@ -55,24 +56,21 @@ export const HistoricalArchiveView: React.FC<HistoricalArchiveViewProps> = ({
 
   // Fetch planetary loss summary once
   useEffect(() => {
-    fetch('/api/v1/global/losses/summary')
-      .then((r) => r.json())
+    DataService.getLossSummary()
       .then((data) => setLossSummary(data))
       .catch((err) => console.error('Failed to load global losses summary:', err));
   }, []);
 
-  // Fetch historical archive from backend
+  // Fetch historical archive from backend/local dataset
   useEffect(() => {
     setLoading(true);
-    const params = new URLSearchParams();
-    params.append('status', 'PAST_HISTORICAL');
-    if (selectedEra !== 'ALL') params.append('era', selectedEra);
-    if (selectedType !== 'ALL') params.append('type', selectedType);
-    if (searchQuery.trim()) params.append('search', searchQuery.trim());
-    params.append('sortBy', sortBy);
-
-    fetch(`/api/v1/global/disasters?${params.toString()}`)
-      .then((r) => r.json())
+    DataService.getGlobalDisasters({
+      status: 'PAST_HISTORICAL',
+      era: selectedEra,
+      type: selectedType,
+      search: searchQuery,
+      sortBy: sortBy,
+    })
       .then((data) => {
         setDisasters(data.disasters || []);
         setLoading(false);

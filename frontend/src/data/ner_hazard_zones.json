@@ -1,0 +1,180 @@
+{
+  "type": "FeatureCollection",
+  "name": "NER_Landslide_Hazard_Microzones",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "SK-NH10-01",
+        "name": "NH-10 29th Mile Seti Jhora Sector",
+        "state": "Sikkim",
+        "district": "Pakyong",
+        "susceptibility_class": "VERY_HIGH",
+        "susceptibility_score": 0.94,
+        "mean_slope_degrees": 42.5,
+        "lithology": "Daling Group Chlorite-Sericite Schists & Phyllites",
+        "drainage_density_km2": 4.8,
+        "soil_cohesion_kpa": 12.5,
+        "friction_angle_deg": 28.0,
+        "critical_infra": "National Highway 10 (Sikkim Lifeline)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.485, 27.120],
+            [88.510, 27.125],
+            [88.515, 27.145],
+            [88.490, 27.140],
+            [88.485, 27.120]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "SK-PAK-02",
+        "name": "Pakyong Airport Ridge East Flank",
+        "state": "Sikkim",
+        "district": "Pakyong",
+        "susceptibility_class": "HIGH",
+        "susceptibility_score": 0.82,
+        "mean_slope_degrees": 36.8,
+        "lithology": "Quartz-Mica Schist with intense shearing",
+        "drainage_density_km2": 3.6,
+        "soil_cohesion_kpa": 16.0,
+        "friction_angle_deg": 31.0,
+        "critical_infra": "Pakyong Airport Perimeter & Helipad"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.580, 27.220],
+            [88.610, 27.225],
+            [88.615, 27.250],
+            [88.575, 27.245],
+            [88.580, 27.220]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "SK-GTK-03",
+        "name": "Gangtok Burtuk & Indira Bypass Slopes",
+        "state": "Sikkim",
+        "district": "Gangtok",
+        "susceptibility_class": "VERY_HIGH",
+        "susceptibility_score": 0.91,
+        "mean_slope_degrees": 44.0,
+        "lithology": "Weathered Schistose Gneiss & Colluvium",
+        "drainage_density_km2": 5.1,
+        "soil_cohesion_kpa": 11.0,
+        "friction_angle_deg": 26.5,
+        "critical_infra": "Indira Bypass & High-Density Urban Settlements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.605, 27.330],
+            [88.630, 27.335],
+            [88.635, 27.355],
+            [88.600, 27.350],
+            [88.605, 27.330]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "SK-RNG-04",
+        "name": "Rangpo Teesta Confluence Escarpment",
+        "state": "Sikkim",
+        "district": "Pakyong",
+        "susceptibility_class": "MODERATE",
+        "susceptibility_score": 0.62,
+        "mean_slope_degrees": 28.5,
+        "lithology": "Sikkim Group Metasediments",
+        "drainage_density_km2": 2.9,
+        "soil_cohesion_kpa": 22.0,
+        "friction_angle_deg": 33.0,
+        "critical_infra": "Teesta Rail Link Construction Yard & Checkpost"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.520, 27.170],
+            [88.545, 27.175],
+            [88.550, 27.195],
+            [88.515, 27.190],
+            [88.520, 27.170]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "ML-SOH-05",
+        "name": "Sohra (Cherrapunji) Southern Canyon Scarp",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "susceptibility_class": "HIGH",
+        "susceptibility_score": 0.85,
+        "mean_slope_degrees": 48.0,
+        "lithology": "Therria Sandstone & Sylhet Limestone",
+        "drainage_density_km2": 6.2,
+        "soil_cohesion_kpa": 14.0,
+        "friction_angle_deg": 30.0,
+        "critical_infra": "Sohra-Shella Highway Corridor"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [91.690, 25.260],
+            [91.730, 25.265],
+            [91.735, 25.295],
+            [91.685, 25.290],
+            [91.690, 25.260]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "ML-SHL-06",
+        "name": "Shillong Umiam Reservoir Overlook Slopes",
+        "state": "Meghalaya",
+        "district": "Ri-Bhoi",
+        "susceptibility_class": "MODERATE",
+        "susceptibility_score": 0.58,
+        "mean_slope_degrees": 25.0,
+        "lithology": "Shillong Group Quartzites & Phyllites",
+        "drainage_density_km2": 3.1,
+        "soil_cohesion_kpa": 25.0,
+        "friction_angle_deg": 35.0,
+        "critical_infra": "NH-6 Guwahati-Shillong Highway & Hydro Dam"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [91.880, 25.640],
+            [91.910, 25.645],
+            [91.915, 25.670],
+            [91.875, 25.665],
+            [91.880, 25.640]
+          ]
+        ]
+      }
+    }
+  ]
+}

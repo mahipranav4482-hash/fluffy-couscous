@@ -1,0 +1,74 @@
+{
+  "type": "FeatureCollection",
+  "name": "GSI_Historical_Landslides_NER",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "scar_id": "GSI-SK-2023-014",
+        "location": "NH-10 29th Mile",
+        "year": 2023,
+        "month": 10,
+        "type": "Debris Flow & Translational Rockslide",
+        "trigger": "South Lhonak GLOF & Prolonged Monsoonal Inundation",
+        "volume_m3": 85000,
+        "road_blockage_days": 18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.498, 27.132]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scar_id": "GSI-SK-2020-008",
+        "location": "Burtuk, Gangtok",
+        "year": 2020,
+        "month": 7,
+        "type": "Rotational Slump",
+        "trigger": "Uncontrolled Urban Surcharge & Torrential Rain (180mm/24h)",
+        "volume_m3": 42000,
+        "road_blockage_days": 6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.618, 27.342]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scar_id": "GSI-SK-2021-022",
+        "location": "Pakyong Outer Ridge",
+        "year": 2021,
+        "month": 8,
+        "type": "Shallow Soil Slip",
+        "trigger": "Pore pressure build-up along weathered schist plane",
+        "volume_m3": 19000,
+        "road_blockage_days": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [88.595, 27.235]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scar_id": "GSI-ML-2022-045",
+        "location": "Sohra-Shella Gorges",
+        "year": 2022,
+        "month": 6,
+        "type": "Rockfall & Wedge Failure",
+        "trigger": "Extreme Cloudburst (840mm/48h)",
+        "volume_m3": 120000,
+        "road_blockage_days": 24
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [91.712, 25.278]
+      }
+    }
+  ]
+}

@@ -19,6 +19,7 @@ import {
   ProximityEvaluationResult,
   GlobalDisaster,
 } from './types.js';
+import { DataService } from './services/dataService.js';
 
 export const App: React.FC = () => {
   const [zones, setZones] = useState<HazardFeature[]>([]);
@@ -51,20 +52,15 @@ export const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [zonesRes, scarsRes, infraRes, stationsRes] = await Promise.all([
-          fetch('/api/v1/zones').then((r) => r.json()),
-          fetch('/api/v1/scars').then((r) => r.json()),
-          fetch('/api/v1/infrastructure').then((r) => r.json()),
-          fetch('/api/v1/stations').then((r) => r.json()),
-        ]);
+        const data = await DataService.getRegionalData();
 
-        setZones(zonesRes.features || []);
-        setScars(scarsRes.features || []);
-        setInfrastructure(infraRes.features || []);
-        setWeatherStations(stationsRes || []);
+        setZones(data.zones || []);
+        setScars(data.scars || []);
+        setInfrastructure(data.infrastructure || []);
+        setWeatherStations(data.stations || []);
 
-        if (zonesRes.features && zonesRes.features.length > 0) {
-          const firstLive = zonesRes.features[0].properties.liveState;
+        if (data.zones && data.zones.length > 0) {
+          const firstLive = data.zones[0].properties?.liveState;
           if (firstLive) setSelectedZone(firstLive);
         }
       } catch (err) {
@@ -185,12 +181,7 @@ export const App: React.FC = () => {
   const handleTest500mAlert = async () => {
     try {
       // Test location: coordinates ~248m from Mount Merapi volcano
-      const res = await fetch('/api/v1/global/proximity-check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitude: -7.542, longitude: 110.441 }),
-      });
-      const data: ProximityEvaluationResult = await res.json();
+      const data = await DataService.checkProximity(-7.542, 110.441);
       setProximityAlertResult(data);
       setIsBuzzerModalOpen(true);
     } catch (err) {
@@ -290,12 +281,7 @@ export const App: React.FC = () => {
           const testLat = targetDisaster.coordinates[1] + 0.0025;
           const testLon = targetDisaster.coordinates[0];
           try {
-            const res = await fetch('/api/v1/global/proximity-check', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ latitude: testLat, longitude: testLon }),
-            });
-            const data: ProximityEvaluationResult = await res.json();
+            const data = await DataService.checkProximity(testLat, testLon);
             setProximityAlertResult(data);
             setIsBuzzerModalOpen(true);
           } catch (err) {

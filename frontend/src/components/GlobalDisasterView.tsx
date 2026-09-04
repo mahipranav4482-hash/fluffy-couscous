@@ -12,6 +12,7 @@ import {
   getDisasterCode,
   ALL_DISASTER_CODE_LEGENDS,
 } from '../utils/disasterCodes.js';
+import { DataService } from '../services/dataService.js';
 import {
   Globe,
   Flame,
@@ -187,32 +188,21 @@ export const GlobalDisasterView: React.FC<GlobalDisasterViewProps> = ({
 
   // Fetch Country directory & Anomalies
   useEffect(() => {
-    fetch('/api/v1/global/countries')
-      .then((r) => r.json())
-      .then((data) => setCountries(data))
-      .catch(console.error);
-
-    fetch('/api/v1/global/anomalies')
-      .then((r) => r.json())
-      .then((data) => setAnomalies(data))
-      .catch(console.error);
+    DataService.getCountries().then(setCountries);
+    DataService.getLiveAnomalies().then(setAnomalies);
   }, []);
 
   // Fetch filtered disasters
   useEffect(() => {
-    const params = new URLSearchParams();
-    if (selectedCountry !== 'ALL') params.append('country', selectedCountry);
-    if (selectedState !== 'ALL') params.append('state', selectedState);
-    if (selectedStatus !== 'ALL') params.append('status', selectedStatus);
-    if (selectedType !== 'ALL') params.append('type', selectedType);
-    if (selectedEra !== 'ALL') params.append('era', selectedEra);
-
-    fetch(`/api/v1/global/disasters?${params.toString()}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setDisasters(data.disasters || []);
-      })
-      .catch(console.error);
+    DataService.getGlobalDisasters({
+      country: selectedCountry,
+      state: selectedState,
+      status: selectedStatus,
+      type: selectedType,
+      era: selectedEra,
+    }).then((data) => {
+      setDisasters(data.disasters || []);
+    });
   }, [selectedCountry, selectedState, selectedStatus, selectedType, selectedEra]);
 
   // Handle flyTo when country changes
@@ -352,12 +342,7 @@ export const GlobalDisasterView: React.FC<GlobalDisasterViewProps> = ({
     const testLon = targetDisaster.coordinates[0];
 
     try {
-      const res = await fetch('/api/v1/global/proximity-check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitude: testLat, longitude: testLon }),
-      });
-      const data: ProximityEvaluationResult = await res.json();
+      const data = await DataService.checkProximity(testLat, testLon);
       onTriggerProximityAlert(data);
     } catch (err) {
       console.error('Proximity check failed:', err);
