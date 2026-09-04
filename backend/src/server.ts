@@ -639,8 +639,8 @@ if (fs.existsSync(frontendDist)) {
   });
 }
 
-server.listen(port, () => {
-  console.log(`[NER-LEWS] Server running on http://localhost:${port}`);
+server.listen(Number(port), '0.0.0.0', () => {
+  console.log(`[NER-LEWS] Server running on http://localhost:${port} and http://0.0.0.0:${port}`);
   console.log(`[NER-LEWS] WebSocket Alerts Hub on ws://localhost:${port}/api/v1/ws/alerts`);
 });
 
